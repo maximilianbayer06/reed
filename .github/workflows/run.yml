@@ -17,7 +17,4 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            import os
-            print("Directory contents:")
-            for f in os.listdir():
-                print(f)
+            loadData.py
