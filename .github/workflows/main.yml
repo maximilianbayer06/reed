@@ -16,3 +16,4 @@ jobs:
         mongodb-version: ${{ matrix.mongodb-version }}
 
     - run: echo "done"
+    - run: systemctl status mongod
