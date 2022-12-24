@@ -190,7 +190,9 @@ jobs:
 
 
             data = News()
+            print(data)
 
             import json
             with open('results.json', 'w') as fp:
               json.dump(data, fp)
+              
