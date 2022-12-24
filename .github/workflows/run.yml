@@ -189,10 +189,12 @@ jobs:
 
 
 
-            data = News()
-            print(data)
+            #data = News()
+            #print(data)
 
             import json
-            with open('results.json', 'w') as fp:
-              json.dump(data, fp)
+
+
+            with open('new_file.json', 'w') as f:
+              print("The json file is created")
               
