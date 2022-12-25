@@ -58,7 +58,7 @@ def WashingtonPost():
         content = element.find('div', attrs={'class':'story-headline pr-sm'})
         image = element.find('div', attrs={'class':'border-box pl-0 w-100'})
         
-        link = image.find('a')
+        link = element.find('a')
         link = link.get('href')
 
         title = content.find('h3', attrs={'class': 'font-md font-bold font--headline lh-sm gray-darkest hover-blue mb-0 antialiased mb-xxs'})
@@ -90,12 +90,12 @@ def bingImageSearch(query):
     header={'User-Agent':"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"}
     soup = get_soup(url,header)
 
-    """
+
     image_result_raw = soup.find("a",{"class":"iusc"}).find('img')
 
     image = image_result_raw.get('src')
-    """
-    return "none"
+
+    return image
 
     
 
@@ -162,5 +162,3 @@ def News():
 
     news = info
     return news
-
-print(News())
