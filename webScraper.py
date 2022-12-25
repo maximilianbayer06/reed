@@ -162,3 +162,5 @@ def News():
 
     news = info
     return news
+
+print(News())
