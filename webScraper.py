@@ -161,4 +161,4 @@ def News():
     info.update(info4)
 
     news = info
-    return news
+    return info
