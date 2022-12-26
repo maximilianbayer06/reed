@@ -1,9 +1,8 @@
 name: python test
 
 on:
-  workflow_dispatch
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/10 * * * *'
 
     
     
