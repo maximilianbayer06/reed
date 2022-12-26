@@ -4,7 +4,7 @@ import urllib.request, urllib.error, urllib.parse
 
 
 def TheGuardian():
-    Information = {}
+    Information = []
 
     response = requests.get('https://www.theguardian.com/international')
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -27,7 +27,7 @@ def TheGuardian():
         title = str(title).strip()
         img = bingImageSearch(title)
         link = article.get('href')
-        Information[title] = [link, img]
+        Information.append([title, link, img])
 
 
     for article in Articles:
@@ -41,13 +41,13 @@ def TheGuardian():
         title = str(title).strip()
         img = bingImageSearch(title)
         link = article.get('href')
-        Information[title] = [link, img]
+        Information.append([title, link, img])
 
     return Information
 
 
 def WashingtonPost():
-    Information = {}
+    Information = []
 
     response = requests.get('https://www.washingtonpost.com/latest-headlines/?itid=hp_latest-headlines_p003')
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -69,7 +69,7 @@ def WashingtonPost():
         title = title.replace(',', '(comma)')
         img = bingImageSearch(title.replace("’", "'"))
 
-        Information[title] = [link, img]
+        Information.append([title, link, img])
 
     return Information
 
@@ -100,7 +100,7 @@ def bingImageSearch(query):
     
 
 def CNN():
-    Information = {}
+    Information = []
 
     response = requests.get('https://edition.cnn.com/world')
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -120,13 +120,13 @@ def CNN():
         img = element.find('source')
         img = str(img.get('srcset')).replace("amp;", "")
 
-        Information[title] = [link, img]
+        Information.append([title, link, img])
 
     return Information
 
 
 def bingNews():
-    Information = {}
+    Information = []
 
     response = requests.get('https://www.bing.com/news/search?q=Top+stories&setmkt=en-us')
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -144,7 +144,7 @@ def bingNews():
         if image != None:
             image = image.get('data-src-hq')
 
-            Information[title] = [link, image]
+            Information.append([title,link, img])
 
     return Information
 
@@ -154,11 +154,10 @@ def News():
     info3 = WashingtonPost()
     info4 = TheGuardian()
 
-    info = {}
-    info.update(info1)
-    info.update(info2)
-    info.update(info3)
-    info.update(info4)
+    info = []
+    info.append(info1)
+    info.append(info2)
+    info.append(info3)
+    info.append(info4)
 
-    news = info
     return info
