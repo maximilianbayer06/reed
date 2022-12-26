@@ -144,7 +144,7 @@ def bingNews():
         if image != None:
             image = image.get('data-src-hq')
 
-            Information.append([title,link, img])
+            Information.append([title,link, image])
 
     return Information
 
