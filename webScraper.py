@@ -148,16 +148,47 @@ def bingNews():
 
     return Information
 
+
+def header():
+    Information = []
+
+    response = requests.get('https://abcnews.go.com/International')
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    Article = soup.find('section', attrs={'class':'ContentRoll__Item'})
+    Article = Article.find("a").get("href")
+
+    link = Article
+
+    response = requests.get(str(Article))
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    img = soup.find("picture")
+    img = img.find('img')
+    img = img.get("src")
+
+    title = soup.find("h1")
+    title = title.text
+
+    Information.append([title ,link, img])
+
+    return Information
+
+
+
 def News():
+    info0 = header()
     info1 = bingNews()
     info2 = CNN()
     info3 = WashingtonPost()
     info4 = TheGuardian()
 
     info = []
+    info.append(info0)
     info.append(info1)
     info.append(info2)
     info.append(info3)
     info.append(info4)
 
     return info
+
