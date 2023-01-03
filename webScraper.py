@@ -163,13 +163,14 @@ def header():
     response = requests.get(str(Article))
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    img = soup.find("picture")
-    img = img.find('img')
-    img = img.get("src")
+    #img = soup.find("picture")
+    #img = img.find('img')
+    #img = img.get("src")
 
     title = soup.find("h1")
     title = title.text
 
+    img = bingImageSearch(title)
     Information.append([title ,link, img])
 
     return Information
